@@ -1,0 +1,10 @@
+aspek,sebelum,sesudah,keterangan
+Jumlah baris (level item),"626,311","626,311",Tidak ada baris hilang
+Jumlah transaksi terdeteksi,"206,296","208,730","+2,434 transaksi dipulihkan"
+Jumlah kolom,15,29 (item) / 49 (transaksi),Fitur bertambah signifikan
+Total penjualan kotor,"Rp12,497,377,000","Rp12,497,377,000",Identik — integritas terjaga
+Omzet bila dihitung naif,"Rp44,592,166,000","Rp12,497,377,000",Koreksi 3.57x lipat
+Missing value,0,0,Tidak ada imputasi diperlukan
+Kolom bervariansi nol,3,0,"status_pembayaran, diskon, pajak dibuang"
+Kolom bertipe salah,1 (waktu sebagai teks),0,Sudah datetime64
+Label tersedia,1 (kategori),"3 (kategori, sesi, segmen_transaksi)",2 label baru dengan SOP

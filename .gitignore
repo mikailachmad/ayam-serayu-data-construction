@@ -1,0 +1,21 @@
+# Dataset mentah & hasil olahan berukuran besar (di atas kenyamanan commit GitHub)
+data/raw/*.csv
+output/
+*.csv.gz
+
+# Kecuali file kecil siap-commit di processed/ (whitelist eksplisit)
+!data/processed/*.csv
+!data/processed/*.json
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db

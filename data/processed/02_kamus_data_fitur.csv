@@ -1,0 +1,29 @@
+fitur,tipe,teknik,formula / aturan,tujuan analitis
+id_transaksi,Teks,Kunci komposit,ID Struk + timestamp + outlet,Mengatasi tabrakan ID Struk (T2)
+tahun,Integer,Ekstraksi,waktu.dt.year,Analisis tren tahunan
+bulan,Integer,Ekstraksi,waktu.dt.month,Deteksi musiman bulanan
+hari_ke,Integer,Ekstraksi,waktu.dt.dayofweek,Pola mingguan
+nama_hari,Kategorik,Pemetaan,hari_ke -> nama hari,Keterbacaan laporan
+is_akhir_pekan,Biner,Aturan,hari_ke >= 5,Membedakan perilaku weekday/weekend
+jam,Integer,Ekstraksi,waktu.dt.hour,Pola harian
+sesi,Kategorik,Binning,"pd.cut atas jam, 6 sesi",Menyederhanakan 24 jam jadi konsep bisnis
+sesi_ordinal,Integer,Ordinal encoding,sesi -> 0..5,Mempertahankan urutan waktu
+jam_sin / jam_cos,Float,Cyclical encoding,sin & cos (2*pi*jam/24),Menjaga kedekatan jam 23 dan jam 0
+tingkat_harga,Kategorik,Binning,pd.cut atas harga_produk,Segmentasi produk murah/menengah/mahal
+n_baris_item,Integer,Agregasi,count baris per transaksi,Ukuran kompleksitas pesanan
+n_produk_unik,Integer,Agregasi,nunique produk per transaksi,Keragaman pesanan
+total_kuantitas,Integer,Agregasi,sum jumlah_produk,Volume pesanan
+nilai_transaksi,Integer,Agregasi,sum penjualan_kotor,Metrik nilai yang BENAR (bukan total_struk)
+nilai_makanan/minuman,Integer,Agregasi kondisional,sum per kategori,Analisis komposisi pesanan
+rata_harga_per_item,Float,Rasio,nilai_transaksi / total_kuantitas,Proksi kelas produk yang dipesan
+rasio_nilai_minuman,Float,Rasio,nilai_minuman / nilai_transaksi,Indikator perilaku upsell minuman
+punya_minuman,Biner,Aturan,qty_minuman > 0,Analisis attachment rate
+is_pesanan_besar,Biner,Aturan,total_kuantitas >= 5,Proksi pesanan rombongan
+is_jam_sibuk,Biner,Aturan,"jam dalam {11,12,13,18,19}",Analisis beban operasional
+keragaman_produk,Float,Rasio,n_produk_unik / total_kuantitas,1.0 = semua item berbeda
+nilai_minmax,Float,Min-Max scaling,(x-min)/(max-min),Untuk algoritma berbasis jarak
+nilai_zscore,Float,Standardisasi,(x-mean)/std,Untuk model linier & PCA
+nilai_log,Float,Log transform,log1p(x),Meredam kemencengan kanan
+nilai_robust,Float,Robust scaling,(x-median)/IQR,Tahan terhadap outlier
+kasir_freq,Float,Frequency encoding,proporsi kemunculan kasir,Menghindari ledakan dimensi
+outlet_* / tipe_* / metode_*,Biner,One-Hot encoding,pd.get_dummies,Kategorik nominal tanpa urutan

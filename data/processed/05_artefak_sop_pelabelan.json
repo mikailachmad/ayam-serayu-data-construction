@@ -1,0 +1,65 @@
+{
+  "label": "segmen_transaksi",
+  "level": "transaksi",
+  "batas": {
+    "Q1": 31000.0,
+    "Q3": 81000.0
+  },
+  "aturan": {
+    "Kecil": "nilai_transaksi <= 31000",
+    "Sedang": "31000 < nilai_transaksi <= 81000",
+    "Besar": "nilai_transaksi > 81000"
+  },
+  "batas_sesi": {
+    "Dini Hari": "00-05",
+    "Pagi": "06-10",
+    "Makan Siang": "11-14",
+    "Sore": "15-17",
+    "Makan Malam": "18-21",
+    "Larut Malam": "22-23"
+  },
+  "kolom_bocor": [
+    "nilai_transaksi",
+    "total_struk",
+    "nilai_makanan",
+    "nilai_minuman",
+    "nilai_minmax",
+    "nilai_zscore",
+    "nilai_log",
+    "nilai_robust",
+    "rata_harga_per_item",
+    "rasio_nilai_minuman",
+    "segmen_ordinal"
+  ],
+  "fitur_aman": [
+    "n_baris_item",
+    "n_produk_unik",
+    "total_kuantitas",
+    "qty_makanan",
+    "qty_minuman",
+    "punya_minuman",
+    "punya_makanan",
+    "is_pesanan_besar",
+    "keragaman_produk",
+    "jam",
+    "jam_sin",
+    "jam_cos",
+    "sesi_ordinal",
+    "hari_ke",
+    "is_akhir_pekan",
+    "is_jam_sibuk",
+    "bulan",
+    "tahun",
+    "kasir_freq",
+    "outlet_AYAM SERAYU - CABANG 1",
+    "outlet_AYAM SERAYU - CABANG 2",
+    "outlet_AYAM SERAYU - PUSAT",
+    "tipe_penjualan_Dine in",
+    "tipe_penjualan_Online",
+    "tipe_penjualan_Take Away",
+    "metode_pembayaran_Debit",
+    "metode_pembayaran_QRIS",
+    "metode_pembayaran_Tunai"
+  ],
+  "n_transaksi_acuan": 208730
+}
