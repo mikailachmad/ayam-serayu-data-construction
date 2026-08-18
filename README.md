@@ -2,7 +2,7 @@
 
 Data construction pipeline untuk 626 ribu baris transaksi POS 3 tahun (2023–2025), dari tahapan analisis distribusi titik pola hingga siap dipakai model, disertai dengan bukti empiris di setiap keputusan cleaning.
 
-## Kenapa proyek ini beda dari notebook cleaning pada umumnya
+## Karakteristik Dataset
 
 Dataset ini **tidak punya satu pun missing value**. Kalau divalidasi dengan `df.isna().sum()`
 atau `df.describe()` saja, kelihatannya sudah rapi. Tapi dua cacat struktural serius baru
@@ -14,7 +14,8 @@ ketahuan setelah divalidasi terhadap aturan bisnisnya:
 - **Granularitas salah.** Data tercatat per baris item, tapi kolom nilai transaksi
   di-_replikasi_ di setiap baris. Menjumlahkannya langsung membuat omzet **tergelembung 3,57×**.
 
-Setiap keputusan pembersihan di notebook ini **diuji secara empiris**, bukan sekadar asumsi.
+Setiap keputusan pembersihan di notebook ini **diuji secara empiris** berdasarkan karakteristik dataset.
+
 Contoh: 10.416 baris yang identik 100% _tidak_ dihapus, karena uji rekonsiliasi membuktikan
 menghapusnya justru merusak kecocokan nilai pada 10.131 transaksi.
 
@@ -81,4 +82,5 @@ Notebook dijalankan `Run All`, kemudian seluruh output (CSV & PNG) otomatis terg
 
 ## Stack
 
-`pandas` · `numpy` · `matplotlib` tanpa dependency ML, agar notebook bisa dijalankan siapa pun tanpa environment rumit.
+`pandas` · `numpy` · `matplotlib` 
+Tanpa dependency ML, agar notebook bisa dijalankan siapa pun tanpa environment rumit.
